@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  devDb:
+    image: postgres:18
+    container_name: dev_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - devDbData:/var/lib/postgresql/18
+
+volumes:
+  devDbData:
