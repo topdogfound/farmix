@@ -1,0 +1,42 @@
+### Get all crop categories
+
+GET http://localhost:8000/api/crop-categories
+Accept: application/json
+
+### Get single crop category
+
+GET http://localhost:8000/api/crop-categories/12
+Accept: application/json
+
+### Create a new crop category
+
+POST http://localhost:8000/api/crop-categories
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|SOL7tNB2143987QVv0g4IL2z8atdpDYsg2mEvK8N7fe89124
+
+{
+"name": "Wheat",
+"slug": "wheat",
+"description": "High quality wheat crop"
+}
+
+### Update a crop category
+
+PUT http://localhost:8000/api/crop-categories/11
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|SOL7tNB2143987QVv0g4IL2z8atdpDYsg2mEvK8N7fe89124
+
+{
+"name": "Updated Wheat",
+"slug": "updated-wheat",
+"description": "Updated description"
+}
+
+### Delete a crop category
+
+DELETE http://localhost:8000/api/crop-categories/14
+Accept: application/json
+Authorization: Bearer 1|SOL7tNB2143987QVv0g4IL2z8atdpDYsg2mEvK8N7fe89124
+

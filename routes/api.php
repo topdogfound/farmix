@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CropCategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -8,13 +9,13 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
+// Public routes (no auth)
+Route::get('crop-categories', [CropCategoryController::class, 'index']);
+Route::get('crop-categories/{cropCategory}', [CropCategoryController::class, 'show']);
 
-// V1
-Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function () {
-    //
-});
-
-// V2
-Route::prefix('v2')->namespace('App\Http\Controllers\Api\V2')->group(function () {
-    //
+// Protected routes (require auth + token)
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('crop-categories', [CropCategoryController::class, 'store']);
+    Route::put('crop-categories/{cropCategory}', [CropCategoryController::class, 'update']);
+    Route::delete('crop-categories/{cropCategory}', [CropCategoryController::class, 'destroy']);
 });
