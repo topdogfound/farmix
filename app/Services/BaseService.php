@@ -21,15 +21,19 @@ abstract class BaseService
     public function getAll(array $columns = ['*'])
     {
         return $this->safeExecute(
-            fn () => $this->repository->all($columns),
+            fn() => $this->repository->all($columns),
             'Failed fetching all records'
         );
+    }
+    public function list(array $columns = ['*'])
+    {
+        return $this->getAll($columns);
     }
 
     public function paginate(int $perPage = 15, array $columns = ['*'])
     {
         return $this->safeExecute(
-            fn () => $this->repository->paginate($perPage, $columns),
+            fn() => $this->repository->paginate($perPage, $columns),
             'Pagination failed'
         );
     }
@@ -37,7 +41,7 @@ abstract class BaseService
     public function find(int|string $id, array $columns = ['*'])
     {
         return $this->safeExecute(
-            fn () => $this->repository->findOrFail($id, $columns),
+            fn() => $this->repository->findOrFail($id, $columns),
             "Record not found: {$id}"
         );
     }
@@ -45,7 +49,7 @@ abstract class BaseService
     public function create(array $data)
     {
         return $this->safeExecute(
-            fn () => $this->repository->create($data),
+            fn() => $this->repository->create($data),
             'Create failed'
         );
     }
@@ -53,7 +57,7 @@ abstract class BaseService
     public function update(int|string $id, array $data)
     {
         return $this->safeExecute(
-            fn () => $this->repository->update($id, $data),
+            fn() => $this->repository->update($id, $data),
             "Update failed for ID {$id}"
         );
     }
@@ -61,7 +65,7 @@ abstract class BaseService
     public function delete(int|string $id)
     {
         return $this->safeExecute(
-            fn () => $this->repository->delete($id),
+            fn() => $this->repository->delete($id),
             "Delete failed for ID {$id}"
         );
     }
@@ -73,7 +77,7 @@ abstract class BaseService
     public function transaction(callable $callback)
     {
         return $this->safeExecute(
-            fn () => $this->repository->transaction($callback),
+            fn() => $this->repository->transaction($callback),
             'Transaction failed'
         );
     }
