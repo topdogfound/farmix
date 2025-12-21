@@ -1,0 +1,8 @@
+Organization Setup : 
+    php artisan make:model Organization
+    php artisan make:model OrganizationType
+
+    php artisan make:migration create_organization_schema_tables
+
+
+    php artisan make:seeder OrganizationTypeSeeder
