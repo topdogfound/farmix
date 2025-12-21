@@ -12,23 +12,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Create schema
-        DB::statement('CREATE SCHEMA IF NOT EXISTS organization');
-
-        // organization.organization_types
-        Schema::create('organization.organization_types', function (Blueprint $table) {
+        // organization_types
+        Schema::create('organization_types', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->timestamps();
         });
 
-        // organization.organizations
-        Schema::create('organization.organizations', function (Blueprint $table) {
+        // organizations
+        Schema::create('organizations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
 
             $table->foreignId('organizationTypeId')
-                ->constrained('organization.organization_types')
+                ->constrained('organization_types')
                 ->cascadeOnDelete();
 
             $table->string('location')->nullable();
@@ -44,7 +41,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('organization.organizations');
-        Schema::dropIfExists('organization.organization_types');
+        Schema::dropIfExists('organizations');
+        Schema::dropIfExists('organization_types');
     }
 };
