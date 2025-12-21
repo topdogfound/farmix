@@ -32,3 +32,7 @@ Chemicals :
     php artisan make:model Chemical
 
     php artisan make:migration create_chemicals_tables
+
+Laravel Filament : 
+    composer require filament/filament:"^4.0"
+    php artisan filament:install --panels
