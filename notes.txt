@@ -1,0 +1,34 @@
+Organization Setup : 
+    php artisan make:model Organization
+    php artisan make:model OrganizationType
+
+    php artisan make:migration create_organization_schema_tables
+
+    php artisan make:seeder OrganizationTypeSeeder
+
+Crop Setup : 
+    php artisan make:model Crop
+    php artisan make:model CropCategory
+    php artisan make:model Stage
+    php artisan make:model CropStage
+
+    php artisan make:migration create_crop_schema_tables
+
+Spray Schedule Setup : 
+    php artisan make:model SpraySchedule
+    php artisan make:model SprayScheduleItem
+    php artisan make:model SprayControl
+
+    php artisan make:migration create_spray_tables
+
+Threats : 
+    php artisan make:model CropThreatType
+    php artisan make:model CropThreat
+
+    php artisan make:migration create_crop_threats_tables
+
+Chemicals : 
+    php artisan make:model ChemicalType
+    php artisan make:model Chemical
+
+    php artisan make:migration create_chemicals_tables
