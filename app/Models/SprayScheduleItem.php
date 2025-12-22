@@ -28,4 +28,15 @@ class SprayScheduleItem extends Model
     {
         return $this->hasMany(SprayControl::class, 'sprayScheduleItemId');
     }
+
+    public function getDisplayLabelAttribute(): string
+    {
+        return sprintf(
+            '(%s - %s - %s) - %s',
+            $this->schedule->crop->name,
+            $this->schedule->organization->name,
+            $this->schedule->year,
+            $this->cropStage->stage->name,
+        );
+    }
 }

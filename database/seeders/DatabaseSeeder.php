@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             OrganizationTypeSeeder::class,
             CropCategorySeeder::class,
+            CropCategoryPermissionSeeder::class
         ]);
     }
 }

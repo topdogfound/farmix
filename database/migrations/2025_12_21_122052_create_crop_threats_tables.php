@@ -8,8 +8,8 @@ return new class extends Migration
 {
     public function up(): void
     {
-        // crop_threats_types
-        Schema::create('crop_threats_types', function (Blueprint $table) {
+        // crop_threat_types
+        Schema::create('crop_threat_types', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique(); // Disease / Insect / Pest
             $table->timestamps();
@@ -18,7 +18,7 @@ return new class extends Migration
         // crop_threats
         Schema::create('crop_threats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cropThreatTypeId')->constrained('crop_threats_types')->cascadeOnDelete();
+            $table->foreignId('cropThreatTypeId')->constrained('crop_threat_types')->cascadeOnDelete();
             $table->string('name');
             $table->text('description')->nullable();
             $table->timestamps();
@@ -30,6 +30,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('crop_threats');
-        Schema::dropIfExists('crop_threats_types');
+        Schema::dropIfExists('crop_threat_types');
     }
 };
