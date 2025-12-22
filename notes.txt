@@ -32,3 +32,18 @@ Chemicals :
     php artisan make:model Chemical
 
     php artisan make:migration create_chemicals_tables
+
+Laravel Filament : 
+    composer require filament/filament:"^4.0"
+    php artisan filament:install --panels
+    php artisan make:filament-user
+    php artisan vendor:publish --tag=filament-config
+
+
+    php artisan make:filament-resource CropCategory
+    php artisan make:filament-resource Crop
+    php artisan make:filament-resource Stages
+
+    php artisan make:filament-resource Chemical
+    php artisan make:filament-resource ChemicalType
+
